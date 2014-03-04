@@ -4,7 +4,7 @@
 #include "SpacingMap.h"
 
 
-#define GROUP_NUM			3
+#define GROUP_NUM			2
 #define XD					ofGetWidth()
 #define YD					ofGetHeight()
 #define LEYE_RADIUS			YD/6
