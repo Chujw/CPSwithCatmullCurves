@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxVectorGraphics\src\ofxVectorGraphics.cpp">
+      <Filter>addons\ofxVectorGraphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS.cpp">
+      <Filter>addons\ofxVectorGraphics\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GridCollisionDetection.cpp">
+      <Filter>src\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EdgeMap.cpp">
+      <Filter>src\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpacingMap.cpp">
+      <Filter>src\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ChainCode.cpp">
+      <Filter>src\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Particle.cpp">
+      <Filter>src\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParticleGroups.cpp">
+      <Filter>src\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParticleManager.cpp">
+      <Filter>src\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\makePDF.cpp">
+      <Filter>src\PDF</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834f65-f3a9-211e-73b8-dc85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVectorGraphics">
+      <UniqueIdentifier>{5a7f3658-b06b-db97-f4e1-dd19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVectorGraphics\src">
+      <UniqueIdentifier>{f615f000-d48c-b1d6-f1c2-6edd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVectorGraphics\libs">
+      <UniqueIdentifier>{b341f552-35c4-7eb6-b3c9-9d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{74e8eac0-319f-472b-ac0c-65910fdb7198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Grid">
+      <UniqueIdentifier>{a162cc50-fb6c-46ff-8ae2-2cc18edd0bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Map">
+      <UniqueIdentifier>{1f5a289f-9e67-42c0-9abc-4c8f8680000c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Particles">
+      <UniqueIdentifier>{cfdcc3ac-ebba-4589-b65e-ccdaa474be63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\PDF">
+      <UniqueIdentifier>{8def846a-8bc9-4423-9040-ff2e6fe6a996}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\src\ofxVectorGraphics.h">
+      <Filter>addons\ofxVectorGraphics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS.hpp">
+      <Filter>addons\ofxVectorGraphics\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS_Types.hpp">
+      <Filter>addons\ofxVectorGraphics\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sob.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GridCollisionDetection.h">
+      <Filter>src\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EdgeMap.h">
+      <Filter>src\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpacingMap.h">
+      <Filter>src\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ChainCode.h">
+      <Filter>src\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Particle.h">
+      <Filter>src\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleGroups.h">
+      <Filter>src\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleManager.h">
+      <Filter>src\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gaussian.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\makePDF.h">
+      <Filter>src\PDF</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
