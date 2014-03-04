@@ -3,7 +3,7 @@
 #include "ofxVectorGraphics.h"
 #include "ofMain.h"
 
-#define pathrecordstep 4.5
+#define pathrecordstep 3
 
 class makePDF {
 private:	

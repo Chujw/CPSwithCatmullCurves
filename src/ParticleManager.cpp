@@ -67,13 +67,13 @@ void ParticleManager::CreateEdgeChain()
 		parGroup[1].Setup_parlist_forg(m_lineEdgechain,linepar_numpt,&m_spacing);	
 		parGroup[1].Setup_Foreground_map(AllPixelsInChain, allpixels_num);
 	}
-	////----------------------------------------------------
-	//// Make a third group with different directions
-	////----------------------------------------------------
-	//edgemap[num_map].MakeOpenEdgeChainsFromThreadEdge(SECOND_EDGE_START,SECOND_EDGE_END,&second_linepar_numpt,m_spacing.GetDefaultSpacing());
-	//m_lineEdgechain = edgemap[num_map].GetForgEdgeChain();
-	//parGroup[2].Setup_parlist_forg(m_lineEdgechain,second_linepar_numpt,m_spacing);	
-	//parGroup[2].Setup_2ndForeground_map(AllPixelsInChain, allpixels_num);
+	//----------------------------------------------------
+	// Make a third group with different directions
+	//----------------------------------------------------
+	edgemap[num_map].MakeOpenEdgeChainsFromThreadEdge(SECOND_EDGE_START,SECOND_EDGE_END,&second_linepar_numpt,m_spacing.GetDefaultSpacing());
+	m_lineEdgechain = edgemap[num_map].GetForgEdgeChain();
+	parGroup[2].Setup_parlist_forg(m_lineEdgechain,second_linepar_numpt,&m_spacing);	
+	parGroup[2].Setup_2ndForeground_map(AllPixelsInChain, allpixels_num);
 }
 
 //---------------------------------------------
@@ -102,6 +102,10 @@ void ParticleManager::Simulate(ofImage* canvas)
 			////Saved1stGroup = true;
 			//}
 			parGroup[1].Simulate(&m_spacing, canvas);
+		}
+		else if(!parGroup[2].GetStopSignal())
+		{
+			parGroup[2].Simulate(&m_spacing, canvas);
 		}
 		else
 		{	Mngr_canstop = true;
