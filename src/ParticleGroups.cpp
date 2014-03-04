@@ -356,7 +356,7 @@ void ParticleGroups::KeepDeadtracesAndExpand(makePDF* deadpartrace, float x, flo
 
 	if(thisdeadpar.deadtraces.GetPathSize()>=2)
 	{
-		for(int iter = 0; iter<5; iter++)
+		for(int iter = 0; iter<4; iter++)
 		{
 			ofPoint *p1 = thisdeadpar.deadtraces.GetPoint(thisdeadpar.deadtraces.GetPathSize()-2);
 			ofPoint *p2 = thisdeadpar.deadtraces.GetPoint(thisdeadpar.deadtraces.GetPathSize()-1);
@@ -445,11 +445,11 @@ void ParticleGroups::StoreCatmullPath()
 {
 	for(int i=0;i<numpt;i++)
 	{
-		if(!Is_Foreground)	// store every point for background mode
-			particle[i].storepathforPDF();
+		//if(!Is_Foreground)	// store every point for background mode
+		//	particle[i].storepathforPDF();
 
-		else	// only store visible points for foreground mode
-		{
+		//else	// only store visible points for foreground mode
+		//{
 			if(particle[i].Is_visible)	// cases: stay in feature map & just move in feature map
 				particle[i].storepathforPDF();
 			else if(!particle[i].Is_visible && particle[i].Was_visible && particle[i].makepdf.GetPathSize()>0)	//move out of feature map
@@ -457,7 +457,7 @@ void ParticleGroups::StoreCatmullPath()
 				KeepDeadtracesAndExpand(&particle[i].makepdf,particle[i].pos.x,particle[i].pos.y); // copy path to a deadpar
 				particle[i].makepdf.ClearPath();	// clear path
 			}
-		}
+		//}
 	}
 }
 
@@ -902,9 +902,16 @@ void ParticleGroups::BoundaryControl_Window()
 				//if(particle[indexID].visibility_timer>=VISIBILITY_TIMER_LIMIT)
 				//{
 					//particle[indexID].visibility_timer = 0;
+				if(!OutOfFeatureMap(&particle[indexID]))
+				{
 					particle[indexID].Was_visible = particle[indexID].Is_visible;
 					particle[indexID].Is_visible = true;
-					
+				}
+				else
+				{
+					particle[indexID].Was_visible = particle[indexID].Is_visible;
+					particle[indexID].Is_visible = false;
+				}
 				//}
 			}
 			iter++;
