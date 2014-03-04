@@ -39,7 +39,7 @@ void testApp::draw(){
 		double seconds;
 		//time(&now);
 
-		for(int i =0; i<50; i++)
+		for(int i =0; i<500; i++)
 		{
 			m_par.Simulate(&canvas);	
 		}

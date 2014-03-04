@@ -585,7 +585,7 @@ void ParticleGroups::birth(Particle* endpointA, Particle* endpointB, SpacingMap*
 	//if(numpt==CHAIN_NUM-1)
 	//	cout<<"Warning: numpt is "<<numpt<<" now."<<endl;
 	particle[numpt].pos = endpointA->pos;	// create from the A's position
-	if(endpointA->Is_visible || Is_Foreground)
+	if(endpointA->Is_visible/* || Is_Foreground*/)
 		particle[numpt].makepdf.growfromanotherpath(endpointA->makepdf.GetPath());
 	particle[numpt].last_pos = particle[numpt].pos;
 	particle[numpt].crushAt = particle[numpt].pos;
@@ -623,13 +623,13 @@ void ParticleGroups::birth(Particle* endpointA, Particle* endpointB, SpacingMap*
 	//	particle[numpt].Is_released = false;
 	else
 		particle[numpt].Is_released = true;
-	if(Is_Foreground)
-	{
+	//if(Is_Foreground)
+	//{
 		if(OutOfFeatureMap(&particle[numpt]))
 			particle[numpt].Is_visible = false;
 		else
 			particle[numpt].Is_visible = true;
-	}
+	//}
 	particle[numpt].Was_released = particle[numpt].Is_released;
 	particle[numpt].Is_dying = false;
 	particle[numpt].c = COLOR;
@@ -952,10 +952,10 @@ void ParticleGroups::kill(int indexID)
 	Particle* diedwithpar = FindPar(particle[indexID].diedwith);
 	if(diedwithpar)
 	{
-		if((!Is_Foreground) || (Is_Foreground && particle[indexID].Is_visible && particle[indexID].Was_visible))	// only keep visible pars' trace
+		if(/*(!Is_Foreground) || (Is_Foreground && */particle[indexID].Is_visible && particle[indexID].Was_visible)/*)*/	// only keep visible pars' trace
 			KeepDeadtraces(&particle[indexID].makepdf, particle[indexID].pos.x, particle[indexID].pos.y, diedwithpar);
 	}
-	else if((!Is_Foreground) || (Is_Foreground && particle[indexID].Is_visible && particle[indexID].Was_visible))
+	else if(/*(!Is_Foreground) || (Is_Foreground && */particle[indexID].Is_visible && particle[indexID].Was_visible)/*)*/
 		KeepDeadtracesAndExpand(&particle[indexID].makepdf, particle[indexID].pos.x, particle[indexID].pos.y);
 	// break the link for this slot
 	particle[indexID].prev->next = particle[indexID].next;
