@@ -23,8 +23,8 @@
 #define CHAIN_NUM			1000
 #define DIRECTION_OPEN_AREA		90
 
-#define MASK_IMAGE		"volcano_thresh.png"
-#define SRC_IMAGE		"volcano.png"
+#define MASK_IMAGE		"heart_thresh.png"
+#define SRC_IMAGE		"heart.png"
 
 class EdgeMap{
 private:

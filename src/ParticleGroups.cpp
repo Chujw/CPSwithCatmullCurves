@@ -185,13 +185,13 @@ void ParticleGroups::Setup_Background_map(ofVec2f* AllPixelsInChain, int allpixe
 	{
 		for(int j = 0; j<ofGetHeight(); j++)
 		{
-			//int index = j*ofGetWidth()*3+i*3;
-			//if((testedgepixel[index] ==255 && testedgepixel[index+1] ==255 && testedgepixel[index+2] ==255)	||
-			//	(testedgepixel[index] ==0 && testedgepixel[index+1] ==0 && testedgepixel[index+2] ==0))// black & white background
-			//	Foreground_map[i+j*ofGetWidth()] = true;
-			//else // all pixels with color (not neccessary to be black) is not included in the map
-			//	Foreground_map[i+j*ofGetWidth()] = false;
-			Foreground_map[i+j*ofGetWidth()] = true;	//all areas are included in background map
+			int index = j*ofGetWidth()*3+i*3;
+			if(!(testedgepixel[index] ==255 && testedgepixel[index+1] ==255 && testedgepixel[index+2] ==255)	&&
+				!(testedgepixel[index] ==255 && testedgepixel[index+1] ==0 && testedgepixel[index+2] ==0))// black & white background
+				Foreground_map[i+j*ofGetWidth()] = true;
+			else // all pixels with color (not neccessary to be black) is not included in the map
+				Foreground_map[i+j*ofGetWidth()] = false;
+			//Foreground_map[i+j*ofGetWidth()] = true;	//all areas are included in background map
 		}
 	}
 	//make all the edge pixels as true;
@@ -220,7 +220,7 @@ void ParticleGroups::Setup_Foreground_map(ofVec2f* AllPixelsInChain, int allpixe
 		{
 			//if(testedgepixel[i+j*ofGetWidth()] !=0 && testedgepixel[i+j*ofGetWidth()] !=255)
 			int index = j*ofGetWidth()*3+i*3;
-			if(!(testedgepixel[index] ==255 && testedgepixel[index+1] ==255 && testedgepixel[index+2] ==255))// not white
+			if((testedgepixel[index] ==255 && testedgepixel[index+1] ==255 && testedgepixel[index+2] ==255))// not white
 				Foreground_map[i+j*ofGetWidth()] = true;
 			else // all pixels with color (not neccessary to be black) is not included in the map
 				Foreground_map[i+j*ofGetWidth()] = false;
@@ -251,8 +251,8 @@ void ParticleGroups::Setup_2ndForeground_map(ofVec2f* AllPixelsInChain, int allp
 		{
 			//if(testedgepixel[i+j*ofGetWidth()] !=0 && testedgepixel[i+j*ofGetWidth()] != 255)
 			int index = j*ofGetWidth()*3+i*3;
-			if((testedgepixel[index] ==255 && testedgepixel[index+1] ==0 && testedgepixel[index+2] ==0)	||
-				(testedgepixel[index] ==0 && testedgepixel[index+1] ==0 && testedgepixel[index+2] ==0))//  black & red
+			if((testedgepixel[index] ==255 && testedgepixel[index+1] ==0 && testedgepixel[index+2] ==0)/*	||
+				(testedgepixel[index] ==0 && testedgepixel[index+1] ==0 && testedgepixel[index+2] ==0)*/)//  black & red
 				Foreground_map[i+j*ofGetWidth()] = true;
 			else // all pixels with color (not neccessary to be black) is included in the map
 				Foreground_map[i+j*ofGetWidth()] = false;
@@ -445,11 +445,11 @@ void ParticleGroups::StoreCatmullPath()
 {
 	for(int i=0;i<numpt;i++)
 	{
-		if(!Is_Foreground)	// store every point for background mode
-			particle[i].storepathforPDF();
+		//if(!Is_Foreground)	// store every point for background mode
+		//	particle[i].storepathforPDF();
 
-		else	// only store visible points for foreground mode
-		{
+		//else	// only store visible points for foreground mode
+		//{
 			if(particle[i].Is_visible)	// cases: stay in feature map & just move in feature map
 				particle[i].storepathforPDF();
 			else if(!particle[i].Is_visible && particle[i].Was_visible && particle[i].makepdf.GetPathSize()>0)	//move out of feature map
@@ -457,7 +457,7 @@ void ParticleGroups::StoreCatmullPath()
 				KeepDeadtracesAndExpand(&particle[i].makepdf,particle[i].pos.x,particle[i].pos.y); // copy path to a deadpar
 				particle[i].makepdf.ClearPath();	// clear path
 			}
-		}
+		//}
 	}
 }
 
@@ -902,8 +902,16 @@ void ParticleGroups::BoundaryControl_Window()
 				//if(particle[indexID].visibility_timer>=VISIBILITY_TIMER_LIMIT)
 				//{
 					//particle[indexID].visibility_timer = 0;
+				if(!OutOfFeatureMap(&particle[indexID]))
+				{
 					particle[indexID].Was_visible = particle[indexID].Is_visible;
 					particle[indexID].Is_visible = true;
+				}
+				else
+				{
+					particle[indexID].Was_visible = particle[indexID].Is_visible;
+					particle[indexID].Is_visible = false;
+				}
 					
 				//}
 			}
